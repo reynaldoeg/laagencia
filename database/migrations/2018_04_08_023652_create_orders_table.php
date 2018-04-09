@@ -19,16 +19,16 @@ class CreateOrdersTable extends Migration
             $table->integer('courier_id')->unsigned();
             $table->string('name');
             $table->string('address');
-            $table->double('total', 15, 8);
-            $table->boolean('can_be_accomplished');
-            $table->integer('remainig_time_to_deliver');
-            $table->double('likely_deliver_basedon_courier');
-            $table->double('likely_deliver_basedon_date');
+            $table->double('total', 15, 8)->nullable();
+            $table->integer('status')->unsigned();
+            $table->boolean('can_be_accomplished')->nullable();
+            $table->integer('remainig_time_to_deliver')->nullable();
+            $table->double('likely_deliver_basedon_courier')->nullable();
+            $table->double('likely_deliver_basedon_date')->nullable();
             $table->timestamps();
         });
 
         Schema::table('orders', function(Blueprint $table) {
-           $table->foreign('item_id')->references('id')->on('items');
            $table->foreign('courier_id')->references('id')->on('couriers');
         });
     }
