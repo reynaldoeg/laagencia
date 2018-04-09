@@ -14,12 +14,25 @@
                         </div>
                     @endif
 
-                    <form method="post" action="/result">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="text" name="search">
-                        <input type="submit" name="submit">
-                    </form>
+                    <table border="1">
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Status</th>
+                        </tr>
+
+                        <tr>
+                            <td>{{ $order->name }}</td>
+                            <td>{{ $order->address }}</td>
+                            <td>{{ $order->status }}</td>
+                        </tr>
+                            
+                    </table>
+
+
                 </div>
+
+                        
 
             </div>
         </div>

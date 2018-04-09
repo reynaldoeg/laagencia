@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Courier;
+use App\Product;
+use App\Item;
+use App\Order;
 
 class HomeController extends Controller
 {
@@ -24,5 +28,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function result(Request $request)
+    {
+        $order_id = $request->input('search');
+
+        $order = Order::find($order_id);
+
+        return view('result')->with('order', $order);
     }
 }
